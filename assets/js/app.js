@@ -1,36 +1,82 @@
+let cont = 0;
+function puntajeT(cont){
+  
+  if (cont === 11) {
+    $('#contenedor').empty();
+    alert('tu puntaje es: ' + puntaje);
+    var nick = $('#nombre').val();
+    $('#contenedor').append(`
+      <h1>TU PUNTAJE ES:</h1>
+      <h2>${puntaje}</h2>
+      <a href="index.html"><button id="volver">Volver a jugar</button></a>
+    `);
+    
+  }else{
+    getTrivia();
+  }
+}
+
+$('#volver').click(function() {
+  alert('volver');
+  puntaje = 0;
+  cont = 0;
+})
+
 $('#start').click(function() {
   let nickname = $('#nick').val();
   if (nickname === '') {
     alert('debes ingresar nickname');
   }else {
-    window.location = 'primera.html';
-    getTrivia();
+    $('#nombre').append(nickname);
+    cont++;
+    console.log(cont);
+    puntajeT(cont);
   }
 });
+let puntaje = 0;
 
-function getTrivia() {
-  fetch(`https://opentdb.com/api.php?amount=10&category=15`)
-    .then(function (response) {
-      // Turns the the JSON into a JS object
-      return response.json();
-    })
-    .then(function (categories) {
-      var question = categories.results;
-      question.forEach((data, index) => {
-        $('#contenedor').append(`<h4>${data.question}</h4>`);
-        //let categorie = categories.results[0];
+  function getTrivia() {
+    
+    fetch(`https://opentdb.com/api.php?amount=10&category=15`)
+      .then(function (response) {
+        // Turns the the JSON into a JS object
+        return response.json();
+      })
+      .then(function (categories) {
+        let firstQuestion = categories.results[0].question;
+        $('#contenedor').append(firstQuestion);
+        let categorie = categories.results[0];
         let arrAnswers = [];
-        arrAnswers.push(data.correct_answer);
+        arrAnswers.push(categorie.correct_answer);
         $('#contenedor').append(`
-            <li class="correct"><button>${arrAnswers}</button></li>
+            <li><button id="correct" class="btn btn-default btn-block">${arrAnswers}</button></li>
       `);
-        let incorrect = data.incorrect_answers;
+        let incorrect = categorie.incorrect_answers;
         incorrect.forEach((mala, i) => {
           $('#contenedor').append(`
-            <li class="incorrect"><button>${mala}</button></li>
+            <li><button id="incorrect" class="btn btn-default btn-block">${mala}</button></li>
         `);
+
         });
-      })
-    })
-      
-}
+
+        $('button').click(function () {
+          var id = $(this).attr('id');
+          if (id === 'correct') {
+            puntaje = puntaje + 100;
+            $('#contenedor').empty();
+            cont++;
+            console.log(cont);
+            puntajeT(cont);
+          } else if (id === 'incorrect') {
+            puntaje -= 100;
+            $('#contenedor').empty();
+            cont++;
+            console.log(cont);
+            puntajeT(cont);
+          }
+          console.log(puntaje);
+        })
+      });
+
+  }
+  
