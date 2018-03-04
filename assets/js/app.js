@@ -2,15 +2,15 @@ let cont = 0;
 function puntajeT(cont){
   
   if (cont === 11) {
+    var name = $('#name').val();
     $('#contenedor').empty();
-    alert('tu puntaje es: ' + puntaje);
-    var nick = $('#nombre').val();
+    $('#nombre').empty();
     $('#contenedor').append(`
-      <h1>TU PUNTAJE ES:</h1>
-      <h2>${puntaje}</h2>
+      <img id="game-over" src="assets/img/game-over.png"/>
+      <h3>${name} tu puntaje es:</h3>
+      <h4>${puntaje}</h4>
       <a href="index.html"><button id="volver">Volver a jugar</button></a>
     `);
-    
   }else{
     getTrivia();
   }
@@ -27,9 +27,9 @@ $('#start').click(function() {
   if (nickname === '') {
     alert('debes ingresar nickname');
   }else {
-    $('#nombre').append(nickname);
+    $('.nickname').hide();
+    $('#nombre').append('A jugar <span id="name">'+nickname+'</span>');
     cont++;
-    console.log(cont);
     puntajeT(cont);
   }
 });
@@ -65,16 +65,13 @@ let puntaje = 0;
             puntaje = puntaje + 100;
             $('#contenedor').empty();
             cont++;
-            console.log(cont);
             puntajeT(cont);
           } else if (id === 'incorrect') {
             puntaje -= 100;
             $('#contenedor').empty();
             cont++;
-            console.log(cont);
             puntajeT(cont);
           }
-          console.log(puntaje);
         })
       });
 

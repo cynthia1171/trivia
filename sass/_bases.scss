@@ -1,8 +1,32 @@
 body {
+  font-family: 'Press Start 2P', cursive;
   height: 100vh;
   width: 100%;
-  background-color: #27bcd4;
+  background-color: #000;
+  color: #fff;
   overflow-y: scroll;
+}
+
+#logo {
+  width: 82px;
+  margin-right: 11px;
+}
+
+.nickname {
+  padding-left: 52px;
+  padding-top: 1em;
+  #nick {
+    width: 174px;
+    color: #000;
+  }
+  #start {
+    background-color: red;
+  }
+}
+
+h4 {
+  text-align: center;
+  padding-bottom: 1em;
 }
 
 #contenedor {
@@ -11,10 +35,29 @@ body {
     width: 100%;
     button {
       width: 100%;
-      background-color: #094a54;
+      background-color: #3e95c8;
       color: white;
       border: none;
       margin: 2px;
+      font-size: 10px;
+    }
+  }
+  #game-over {
+    width: 233px;
+    margin-left: 72px;
+  }
+  h3 {
+    margin-left: 22px;
+  }
+  h4 {
+    margin-left: 181px;
+    padding-bottom: 1em;
+  }
+  a {
+    #volver {
+      background-color: red;
+      color: #fff;
+      margin-left: 84px;
     }
   }
 }
