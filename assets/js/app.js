@@ -28,7 +28,7 @@ $('#start').click(function() {
     alert('debes ingresar nickname');
   }else {
     $('.nickname').hide();
-    $('#nombre').append('A jugar <span id="name">'+nickname+'</span>');
+    $('#nombre').append('A jugar <span id="name">'+nickname+'!!!</span>');
     cont++;
     puntajeT(cont);
   }
@@ -44,7 +44,7 @@ let puntaje = 0;
       })
       .then(function (categories) {
         let firstQuestion = categories.results[0].question;
-        $('#contenedor').append(firstQuestion);
+        $('#contenedor').append(`<p id="pregunta">${firstQuestion}</p>`);
         let categorie = categories.results[0];
         let arrAnswers = [];
         arrAnswers.push(categorie.correct_answer);

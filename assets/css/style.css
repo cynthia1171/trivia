@@ -5818,6 +5818,13 @@ body {
   .nickname #start {
     background-color: red; }
 
+#cont #nombre {
+  margin-left: 60px;
+  margin-bottom: 39px; }
+
+#contenedor #pregunta {
+  margin-bottom: 10px;
+  font-size: 13px; }
 #contenedor li {
   list-style: none;
   width: 100%; }
