@@ -3,5 +3,5 @@ Trivia Games es un juego de trivias hecho con la API Open Trivia Database, el ju
 
 ![Durante el juego](http://drive.google.com/uc?export=view&id=1Zgl4zr2OzEHXkopg3euH0_9Grtg8c-5Z) 
 
-## Creado para
-[Laboratoria](http://www.laboratoria.la)
+## Desarrollado para 
+[Laboratoria](http://laboratoria.la)
